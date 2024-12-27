@@ -23,7 +23,7 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 
 from sklearn.preprocessing import StandardScaler
 
-sc = StandardScaler()
+sc = StandardScaler()  #standerdisation
 X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])
 X_test[:, 3:] = sc.transform(X_test[:, 3:])
 
