@@ -18,7 +18,9 @@ y = sc_y.fit_transform(y)
 
 # train svr model
 from sklearn.svm import SVR
+
 regressor = SVR(kernel="rbf")
 regressor.fit(X, y)
 
-#predict
+# predict
+print(sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1, 1)))
