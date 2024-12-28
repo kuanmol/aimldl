@@ -1,6 +1,5 @@
-import numpy as np
-from sklearn.linear_model import LinearRegression
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 
 dataset = pd.read_csv('Position_Salaries.csv')
 x = dataset.iloc[:, 1:-1].values

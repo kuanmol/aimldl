@@ -1,8 +1,5 @@
-import matplotlib.pyplot as plt
-
-import numpy as np
-from sklearn.linear_model import LinearRegression
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 
 dataset = pd.read_csv('Position_Salaries.csv')
 x = dataset.iloc[:, 1:-1].values
@@ -19,12 +16,11 @@ X_poly = poly_reg.fit_transform(x)
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(X_poly, y)
 
-#new result with linear
+# new result with linear
 print(lin_reg.predict([[6.5]]))
 
-#new result with polynomial
+# new result with polynomial
 print(lin_reg_2.predict(poly_reg.fit_transform([[6.5]])))
-
 
 #
 # plt.scatter(x, y, color="red")
@@ -50,23 +46,3 @@ print(lin_reg_2.predict(poly_reg.fit_transform([[6.5]])))
 # plt.xlabel('Position level')
 # plt.ylabel('Salary')
 # plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
