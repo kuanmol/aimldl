@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -18,3 +19,18 @@ from sklearn.linear_model import LogisticRegression
 
 classifier = LogisticRegression(random_state=0)
 classifier.fit(X_train, y_train)
+
+# predict
+classifier.predict(sc.transform([[30, 87000]]))
+
+# predicting test set results
+y_pred = classifier.predict(X_test)
+print(np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), 1))
+print()
+# confusing matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
+print()
+print(accuracy_score(y_test, y_pred))
