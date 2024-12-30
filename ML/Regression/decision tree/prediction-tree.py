@@ -8,4 +8,4 @@ y = dataset.iloc[:, -1].values
 regressor = DecisionTreeRegressor(random_state=0)
 regressor.fit(X, y)
 
-regressor.predict([[6.5]]) #prediction
+regressor.predict([[6.5]])  # prediction
