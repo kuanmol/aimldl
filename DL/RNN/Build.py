@@ -21,7 +21,7 @@ X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
 
 from keras.api.layers import Dense
 from keras.api.layers import LSTM
-from keras.api.layers import Dropout
+from keras.api.layers import Dropout    
 from keras.api.models import Sequential
 
 regressor = Sequential()
