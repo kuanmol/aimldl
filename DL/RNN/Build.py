@@ -24,6 +24,7 @@ from keras.api.layers import LSTM
 from keras.api.layers import Dropout
 from keras.api.models import Sequential
 
+
 regressor = Sequential()
 # Adding the first LSTM layer and some Dropout regularisation
 regressor.add(LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1)))
