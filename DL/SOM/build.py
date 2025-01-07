@@ -35,4 +35,3 @@ for i, x in enumerate(X):
          markersize=10,
          markeredgewidth=2)
 show()
-
