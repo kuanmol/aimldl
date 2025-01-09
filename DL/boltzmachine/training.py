@@ -96,4 +96,15 @@ for epoch in range(1, nb_epoch + 1):
         s += 1.
     print("epoch: " + str(epoch) + " loss: " + str(train_loss / s))
 
-# testing
+    # testing
+test_loss = 0
+s = 0.
+for id_user in range(nb_users):
+    v = training_set[id_user:id_user + 1]
+    vt = test_set[id_user:id_user + 1]
+    if len(vt[vt >= 0]) > 0:
+        _, h = rbm.sample_h(v)
+        _, v = rbm.sample_v(h)
+        test_loss += torch.mean(torch.abs(vt[vt >= 0] - v[vt >= 0]))
+        s += 1.
+print('test loss: ' + str(test_loss / s))
