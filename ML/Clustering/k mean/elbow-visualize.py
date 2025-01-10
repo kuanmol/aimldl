@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -14,9 +13,8 @@ for i in range(1, 11):
     kmeans.fit(X)
     wcss.append(kmeans.inertia_)
 
-plt.plot(range(1,11), wcss)
+plt.plot(range(1, 11), wcss)
 plt.title("The Elbow Method")
 plt.xlabel("Number of clusters")
 plt.ylabel("WCSS")
 plt.show()
-

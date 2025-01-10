@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 dataset_train = pd.read_csv('Google_Stock_Price_Train.csv')
@@ -23,7 +23,6 @@ from keras.api.layers import Dense
 from keras.api.layers import LSTM
 from keras.api.layers import Dropout
 from keras.api.models import Sequential
-
 
 regressor = Sequential()
 # Adding the first LSTM layer and some Dropout regularisation

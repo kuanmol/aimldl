@@ -1,7 +1,7 @@
-import tensorflow as tf
-from keras_preprocessing.image import ImageDataGenerator
 import numpy as np
+import tensorflow as tf
 from keras_preprocessing import image
+from keras_preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(rescale=1. / 255,
                                    shear_range=0.2,

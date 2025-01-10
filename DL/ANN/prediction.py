@@ -1,11 +1,11 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from sklearn.preprocessing import LabelEncoder
 from sklearn.compose import ColumnTransformer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 
 dataset = pd.read_csv('Churn_Modelling.csv')
 X = dataset.iloc[:, 3:-1].values

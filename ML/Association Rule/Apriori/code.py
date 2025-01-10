@@ -29,4 +29,4 @@ resultsinDataFrame = pd.DataFrame(inspect(results),
 print(resultsinDataFrame)
 print()
 print()
-print(resultsinDataFrame.nlargest(n = 10, columns = 'Lift'))
+print(resultsinDataFrame.nlargest(n=10, columns='Lift'))

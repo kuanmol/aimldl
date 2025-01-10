@@ -45,9 +45,6 @@ plt.ylabel('Estimated Salary')
 plt.legend()
 plt.show()
 
-
-
-
 # Visualising the Test set results
 from matplotlib.colors import ListedColormap
 
