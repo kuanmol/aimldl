@@ -30,38 +30,31 @@ def convert(data):
         new_data.append(list(ratings))
     return new_data
 
+
 training_set = convert(training_set)
 test_set = convert(test_set)
 
 training_set = torch.FloatTensor(training_set)
 test_set = torch.FloatTensor(test_set)
 
+
 class SAE(nn.Module):
-    def __init__(self,):
-        super(SAE,self).__init__()
-        self.fc1 = nn.Linear(nb_movies,20)
-        self.fc2 = nn.Linear(20,10)
-        self.fc3 = nn.Linear(10,20)
-        self.fc4 = nn.Linear(20,nb_movies)
-        self.activation=nn.Sigmoid()
-    def forward(self,x):
+    def __init__(self, ):
+        super(SAE, self).__init__()
+        self.fc1 = nn.Linear(nb_movies, 20)
+        self.fc2 = nn.Linear(20, 10)
+        self.fc3 = nn.Linear(10, 20)
+        self.fc4 = nn.Linear(20, nb_movies)
+        self.activation = nn.Sigmoid()
+
+    def forward(self, x):
         x = self.activation(self.fc1(x))
         x = self.activation(self.fc2(x))
         x = self.activation(self.fc3(x))
         x = self.fc4(x)
         return x
-sae=SAE()
-criterion=nn.MSELoss()
-optimizer = optim.RMSprop(sae.parameters(), lr = 0.01, weight_decay = 0.5)
 
 
-
-
-
-
-
-
-
-
-
-
+sae = SAE()
+criterion = nn.MSELoss()
+optimizer = optim.RMSprop(sae.parameters(), lr=0.01, weight_decay=0.5)
