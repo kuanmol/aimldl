@@ -163,7 +163,7 @@ def show_video_of_model(agent, env_name):
     env.close()
     imageio.mimsave('video.mp4', frames, fps=30)
 
-show_video_of_model(agent, 'LunarLander-v2')
+show_video_of_model(agent, 'LunarLander-v3')
 
 def show_video():
     mp4list = glob.glob('*.mp4')
