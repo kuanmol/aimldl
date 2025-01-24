@@ -23,7 +23,7 @@ class Network(nn.Module):
         x = F.relu(x)
         x = self.fc2(x)
         x = F.relu(x)
-        return self.fc2(x)
+        return self.fc3(x)
 
 
 import gymnasium as gym
@@ -115,7 +115,7 @@ agent = Agent(state_size, number_actions)
 number_episode = 2000
 maximum_number_timesteps_per_episode = 1000
 epsilon_starting_value = 1.0
-epsilon_ending_value = 1.0
+epsilon_ending_value = 0.01
 epsilon_decay_value = 0.995
 epsilon = epsilon_starting_value
 scores_on_100_epsilons = deque(maxlen=100)
@@ -134,3 +134,48 @@ for episode in range(1, number_episode + 1):
 
     scores_on_100_epsilons.append(score)
     epsilon = max(epsilon_ending_value, epsilon_decay_value * epsilon)
+    print('\rEpisode {}\tAverage Score: {:.2f}'.format(episode, np.mean(scores_on_100_epsilons)), end="")
+    if episode % 100 == 0:
+        print('\rEpisode {}\tAverage Score: {:.2f}'.format(episode, np.mean(scores_on_100_epsilons)))
+    if np.mean(scores_on_100_epsilons) >= 200.0:
+        print('\nEnviroment solved in {:d} epsisodes!\tAverage Score: {:.2f}'.format(episode - 100,
+                                                                                     np.mean(scores_on_100_epsilons)))
+        torch.save(agent.local_qnetwork.state_dict(),'checkpoint.pth')
+        break
+
+import glob
+import io
+import base64
+import imageio
+from IPython.display import HTML, display
+from gym.wrappers.monitoring.video_recorder import VideoRecorder
+
+def show_video_of_model(agent, env_name):
+    env = gym.make(env_name, render_mode='rgb_array')
+    state, _ = env.reset()
+    done = False
+    frames = []
+    while not done:
+        frame = env.render()
+        frames.append(frame)
+        action = agent.act(state)
+        state, reward, done, _, _ = env.step(action.item())
+    env.close()
+    imageio.mimsave('video.mp4', frames, fps=30)
+
+show_video_of_model(agent, 'LunarLander-v2')
+
+def show_video():
+    mp4list = glob.glob('*.mp4')
+    if len(mp4list) > 0:
+        mp4 = mp4list[0]
+        video = io.open(mp4, 'r+b').read()
+        encoded = base64.b64encode(video)
+        display(HTML(data='''<video alt="test" autoplay
+                loop controls style="height: 400px;">
+                <source src="data:video/mp4;base64,{0}" type="video/mp4" />
+             </video>'''.format(encoded.decode('ascii'))))
+    else:
+        print("Could not find video")
+
+show_video()
