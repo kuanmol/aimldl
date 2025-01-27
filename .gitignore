@@ -10021,3 +10021,7 @@
 /DL/encoder/ml-100k/ua.test
 /DL/encoder/ml-100k/ub.base
 /DL/encoder/ml-100k/ub.test
+/.venv/
+/.github/
+/.github/
+/.idea/

@@ -13,6 +13,7 @@ import base64
 from IPython.display import HTML, display
 import gymnasium as gym
 
+
 class Network(nn.Module):
     def __init__(self, state_size, action_size, seed=42):
         super(Network, self).__init__()
