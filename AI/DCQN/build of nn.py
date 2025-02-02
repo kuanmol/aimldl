@@ -1,15 +1,6 @@
-import os
-import random
-import numpy as np
 import torch
 import torch.nn as nn
-import torch.optim as optim
 import torch.nn.functional as F
-import torch.autograd as autograd
-from torch.autograd import Variable
-from collections import deque, namedtuple
-from torch.utils.data import DataLoader, TensorDataset
-
 
 class Network(nn.Module):
     def __init__(self, action_size, seed=42):
@@ -36,3 +27,14 @@ class Network(nn.Module):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         return self.fc3(x)
+
+
+import gymnasium as gym
+
+env = gym.make('MsPacmanDeterministic-v4', full_action_space=False)
+state_shape = env.observation_space.shape
+state_size = env.observation_space.shape[0]
+number_actions = env.action_space.n
+print('State shape: ', state_shape)
+print('State size: ', state_size)
+print("Number of action: ", number_actions)
