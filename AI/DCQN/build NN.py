@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim as optim
 
 class Network(nn.Module):
     def __init__(self, action_size, seed=42):
@@ -29,11 +30,13 @@ class Network(nn.Module):
         return self.fc3(x)
 
 import gymnasium as gym
+import ale_py
+gym.register_envs(ale_py)
 
-env = gym.make('MsPacmanDeterministic-v0', full_action_space=False)
+env = gym.make('MsPacmanDeterministic-v0', full_action_space = False)
 state_shape = env.observation_space.shape
 state_size = env.observation_space.shape[0]
 number_actions = env.action_space.n
 print('State shape: ', state_shape)
 print('State size: ', state_size)
-print("Number of action: ", number_actions)
+print('Number of actions: ', number_actions)
