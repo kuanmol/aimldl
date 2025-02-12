@@ -94,14 +94,14 @@ class Agent():
             return random.choice(np.arange(self.action_size))
 
     def learn(self, experience, discount_factor):
-        states, actions, rewards, next_state, dones = zip(*experience)
-        states = torch.from_numpy(np.vstack(states)).float().to(self.device)
-        actions = torch.from_numpy(np.vstack(actions)).long().to(self.device)
-        rewards = torch.from_numpy(np.vstack(rewards)).float().to(self.device)
-        next_states = torch.from_numpy(np.vstack(next_state)).float().to(self.device)
-        dones = torch.from_numpy(np.vstack(dones).astype(np.uint8)).float().to(self.device)
-        next_qtarget = self.target_qnetwork(next_state).detach().max(1)[0].unsqueeze(1)
-        q_targets = rewards + (discount_factor + next_qtarget * (1 - dones))
+        states, actions, rewards, next_states, dones = zip(*experience)
+        states = torch.cat(states).float().to(self.device)
+        actions = torch.tensor(actions).long().to(self.device).unsqueeze(1)
+        rewards = torch.tensor(rewards).float().to(self.device).unsqueeze(1)
+        next_states = torch.cat(next_states).float().to(self.device)
+        dones = torch.tensor(dones).float().to(self.device).unsqueeze(1)
+        next_qtarget = self.target_qnetwork(next_states).detach().max(1)[0].unsqueeze(1)
+        q_targets = rewards + (discount_factor * next_qtarget * (1 - dones))
         q_expected = self.local_qnetwork(states).gather(1, actions)
         loss = F.mse_loss(q_expected, q_targets)
         self.optimizer.zero_grad()
@@ -143,3 +143,46 @@ for episode in range(1, number_episode + 1):
                                                                                      np.mean(scores_on_100_epsilons)))
         torch.save(agent.local_qnetwork.state_dict(), 'checkpoint.pth')
         break
+
+# Part 3 - Visualizing the results
+
+import glob
+import io
+import base64
+import imageio
+from IPython.display import HTML, display
+from gym.wrappers.monitoring.video_recorder import VideoRecorder
+
+
+def show_video_of_model(agent, env_name):
+    env = gym.make(env_name, render_mode='rgb_array')
+    state, _ = env.reset()
+    done = False
+    frames = []
+    while not done:
+        frame = env.render()
+        frames.append(frame)
+        action = agent.act(state)
+        state, reward, done, _, _ = env.step(action)
+    env.close()
+    imageio.mimsave('video.mp4', frames, fps=30)
+
+
+show_video_of_model(agent, 'MsPacmanDeterministic-v0')
+
+
+def show_video():
+    mp4list = glob.glob('*.mp4')
+    if len(mp4list) > 0:
+        mp4 = mp4list[0]
+        video = io.open(mp4, 'r+b').read()
+        encoded = base64.b64encode(video)
+        display(HTML(data='''<video alt="test" autoplay
+                loop controls style="height: 400px;">
+                <source src="data:video/mp4;base64,{0}" type="video/mp4" />
+             </video>'''.format(encoded.decode('ascii'))))
+    else:
+        print("Could not find video")
+
+
+show_video()
