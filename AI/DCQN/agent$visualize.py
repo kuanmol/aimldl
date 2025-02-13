@@ -144,15 +144,12 @@ for episode in range(1, number_episode + 1):
         torch.save(agent.local_qnetwork.state_dict(), 'checkpoint.pth')
         break
 
-# Part 3 - Visualizing the results
-
 import glob
 import io
 import base64
 import imageio
 from IPython.display import HTML, display
 from gym.wrappers.monitoring.video_recorder import VideoRecorder
-
 
 def show_video_of_model(agent, env_name):
     env = gym.make(env_name, render_mode='rgb_array')
@@ -167,9 +164,7 @@ def show_video_of_model(agent, env_name):
     env.close()
     imageio.mimsave('video.mp4', frames, fps=30)
 
-
 show_video_of_model(agent, 'MsPacmanDeterministic-v0')
-
 
 def show_video():
     mp4list = glob.glob('*.mp4')
@@ -183,6 +178,5 @@ def show_video():
              </video>'''.format(encoded.decode('ascii'))))
     else:
         print("Could not find video")
-
 
 show_video()
