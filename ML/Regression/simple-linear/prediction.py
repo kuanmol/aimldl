@@ -16,7 +16,7 @@ regressor.fit(X_train, Y_train)
 y_pred = regressor.predict(X_test)
 
 # training set
-plt.figure(1)  # Create the first figure
+plt.figure(1)  # Create the webpage figure
 plt.scatter(X_train, Y_train, color="red")
 plt.plot(X_train, regressor.predict(X_train), color="blue")
 plt.title("Salary vs Experience  (training set)")
@@ -24,7 +24,7 @@ plt.xlabel("Years of Experience")
 plt.ylabel("Salary")
 
 # test result set
-plt.figure(2)  # Create the first figure
+plt.figure(2)  # Create the webpage figure
 plt.scatter(X_test, Y_test, color="red")
 plt.plot(X_train, regressor.predict(X_train), color="blue")
 plt.title("Salary vs Experience (Test set)")

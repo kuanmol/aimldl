@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b80f0ce5-b718-4450-9b26-102b7e699798" name="Changes" comment="deepq">
-      <change afterPath="$PROJECT_DIR$/AI/DCQN/build of nn.py" afterDir="false" />
+    <list default="true" id="b80f0ce5-b718-4450-9b26-102b7e699798" name="Changes" comment="dcqlearning agent training">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ARTIFICIAL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ARTIFICIAL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI/q-learning/visualiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI/q-learning/visualiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DL/RNN/Build.py" beforeDir="false" afterPath="$PROJECT_DIR$/DL/RNN/Build.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ML/Regression/simple-linear/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/ML/Regression/simple-linear/prediction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dfgh.py" beforeDir="false" afterPath="$PROJECT_DIR$/dfgh.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,16 +52,27 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.Build.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CODE.executor&quot;: &quot;Run&quot;,
+    &quot;Python.agebt$visualize.executor&quot;: &quot;Run&quot;,
     &quot;Python.bui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.build NN.executor&quot;: &quot;Run&quot;,
+    &quot;Python.build of nn.executor&quot;: &quot;Run&quot;,
+    &quot;Python.code.executor&quot;: &quot;Run&quot;,
     &quot;Python.dfgh.executor&quot;: &quot;Run&quot;,
+    &quot;Python.env.executor&quot;: &quot;Run&quot;,
+    &quot;Python.enviro.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ert.executor&quot;: &quot;Run&quot;,
     &quot;Python.implementation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pac.executor&quot;: &quot;Run&quot;,
     &quot;Python.training.executor&quot;: &quot;Run&quot;,
+    &quot;Python.trian ai.executor&quot;: &quot;Run&quot;,
     &quot;Python.visualiz.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Artificial/DL/encoder&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/k8/dock/python-sql&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -69,8 +80,8 @@
       <recent name="D:\Artificial\DL\encoder" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dfgh">
-    <configuration name="archofnn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Build">
+    <configuration name="Build" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ARTIFICIAL" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,11 +90,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AI/q-learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DL/RNN" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Artificial\AI\q-learning\archofnn.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DL/RNN/Build.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CODE" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ARTIFICIAL" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DL/CNN" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DL/CNN/CODE.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -145,33 +178,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AI/q-learning" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DL/boltzmachine" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AI/q-learning/training.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="visualiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ARTIFICIAL" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AI/q-learning" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AI/q-learning/visualiz.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DL/boltzmachine/training.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -182,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.dfgh" />
-        <item itemvalue="Python.visualiz" />
-        <item itemvalue="Python.training" />
-        <item itemvalue="Python.archofnn" />
+        <item itemvalue="Python.Build" />
         <item itemvalue="Python.bui" />
+        <item itemvalue="Python.training" />
+        <item itemvalue="Python.dfgh" />
+        <item itemvalue="Python.CODE" />
       </list>
     </recent_temporary>
   </component>
@@ -302,13 +313,89 @@
       <option name="project" value="LOCAL" />
       <updated>1737751345636</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dcql">
+      <option name="closed" value="true" />
+      <created>1738001855098</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738001855098</updated>
+    </task>
+    <task id="LOCAL-00014" summary="dcql">
+      <option name="closed" value="true" />
+      <created>1738519466249</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738519466249</updated>
+    </task>
+    <task id="LOCAL-00015" summary="dcql">
+      <option name="closed" value="true" />
+      <created>1738561090063</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738561090063</updated>
+    </task>
+    <task id="LOCAL-00016" summary="a3c">
+      <option name="closed" value="true" />
+      <created>1739133399905</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1739133399905</updated>
+    </task>
+    <task id="LOCAL-00017" summary="a3c">
+      <option name="closed" value="true" />
+      <created>1739205005102</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1739205005102</updated>
+    </task>
+    <task id="LOCAL-00018" summary="dcqlearning training">
+      <option name="closed" value="true" />
+      <created>1739362914116</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739362914116</updated>
+    </task>
+    <task id="LOCAL-00019" summary="dcqlearning agent training">
+      <option name="closed" value="true" />
+      <created>1739363370075</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1739363370075</updated>
+    </task>
+    <task id="LOCAL-00020" summary="dcqlearning agent training">
+      <option name="closed" value="true" />
+      <created>1739375123080</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1739375123080</updated>
+    </task>
+    <task id="LOCAL-00021" summary="dcqlearning agent training">
+      <option name="closed" value="true" />
+      <created>1739456123698</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1739456123698</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="exp" />
     <MESSAGE value="encoder" />
     <MESSAGE value="deepq" />
-    <option name="LAST_COMMIT_MESSAGE" value="deepq" />
+    <MESSAGE value="dcql" />
+    <MESSAGE value="a3c" />
+    <MESSAGE value="dcqlearning training" />
+    <MESSAGE value="dcqlearning agent training" />
+    <option name="LAST_COMMIT_MESSAGE" value="dcqlearning agent training" />
   </component>
 </project>

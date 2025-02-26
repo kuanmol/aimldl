@@ -10025,3 +10025,10 @@
 /.github/
 /.github/
 /.idea/
+/AI/q-learning/checkpoint.pth
+/AI/q-learning/video.mp4
+/.env
+/DL/boltzmachine/ml-1m/
+/DL/boltzmachine/ml-100k/
+/AI/DCQN/checkpoint.pth
+/AI/DCQN/video.mp4
