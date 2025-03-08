@@ -10031,3 +10031,9 @@
 /DL/boltzmachine/ml-100k/
 /AI/DCQN/checkpoint.pth
 /AI/DCQN/video.mp4
+/PYTORCH/models/
+/PYTORCH/.ipynb_checkpoints/pytorch-fundamental-checkpoint.ipynb
+/TENSORFLOW/pizza_steak/
+/TENSORFLOW/10_food_classes_all_data/
+/TENSORFLOW/.ipynb_checkpoints/
+/PYTORCH/data/
