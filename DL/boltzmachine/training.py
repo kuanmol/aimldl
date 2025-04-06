@@ -93,7 +93,7 @@ for epoch in range(1, nb_epoch + 1):
         s += 1.
     print("epoch: " + str(epoch) + " loss: " + str(train_loss / s))
 
-    # testing
+# testing
 test_loss = 0
 s = 0.
 for id_user in range(nb_users):
