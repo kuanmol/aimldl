@@ -27,6 +27,7 @@ cnn.add(tf.keras.layers.Flatten())
 cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
 cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 cnn.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
 cnn.fit(x=training_set, validation_data=test_set, epochs=25)
 
 test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size=(64, 64))
