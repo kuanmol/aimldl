@@ -1,12 +1,8 @@
 import torch
 import torch.nn as nn
-import torch.optim as optim
 import torch.nn.functional as F
-import torch.autograd as autograd
 from gymnasium import ObservationWrapper
 from gymnasium.spaces import Box
-from torch.autograd import Variable
-from collections import deque, namedtuple
 
 
 class Network(nn.Module):
@@ -100,6 +96,7 @@ number_actions = env.action_space.n
 print("State shape:", state_shape)
 print("Number actions:", number_actions)
 print("Action names:", env.unwrapped.get_action_meanings())
+# %%
 
 # intializing the hyperparameters
 learning_rate = 1e-4
@@ -122,5 +119,122 @@ class Agent():
         policy = F.softmax(action_values, dim=-1)
         return np.array([np.random.choice(len(p), p=p) for p in policy.detach().cpu().numpy()])
 
+    def step(self, state, action, reward, next_state, done):
+        batch_size = state.shape[0]
+        state = torch.tensor(np.array(state), dtype=torch.float32, device=self.device)
+        next_state = torch.tensor(np.array(next_state), dtype=torch.float32, device=self.device)
+        reward = torch.tensor(np.array(reward), dtype=torch.float32, device=self.device)
+        done = torch.tensor(np.array(done), dtype=torch.float32, device=self.device)
+        action_values, state_value = self.network(state)
+        _, next_state_value = self.network(next_state)
+        target_state_value = reward + discount_factor * next_state_value * (1 - done)
+        advantage = target_state_value - state_value
+        probs = F.softmax(action_values, dim=-1)
+        logprobs = F.log_softmax(action_values, dim=-1)
+        entropy = -torch.sum(probs * logprobs, axis=-1)
+        batch_idx = np.arange(batch_size)
+        logp_actions = logprobs[batch_idx, action]
+        actor_loss = -(logp_actions * advantage.detach()).mean() - 0.001 * entropy.mean()
+        critic_loss = F.mse_loss(target_state_value.detach(), state_value)
+        total_loss = actor_loss + critic_loss
+        self.optimizer.zero_grad()
+        total_loss.backward()
+        self.optimizer.step()
 
 
+# Initializing the A3C agent
+
+agent = Agent(number_actions)
+
+
+# Evaluating our A3C agent on a certain number of episodes
+
+def evaluate(agent, env, n_episodes=1):
+    episodes_rewards = []
+    for _ in range(n_episodes):
+        state, _ = env.reset()
+        total_reward = 0
+        while True:
+            action = agent.act(state)
+            state, reward, done, info, _ = env.step(action[0])
+            total_reward += reward
+            if done:
+                break
+        episodes_rewards.append(total_reward)
+    return episodes_rewards
+
+
+class EnvBatch:
+
+    def __init__(self, n_envs=10):
+        self.envs = [make_env() for _ in range(n_envs)]
+
+    def reset(self):
+        _states = []
+        for env in self.envs:
+            _states.append(env.reset()[0])
+        return np.array(_states)
+
+    def step(self, actions):
+        next_states, rewards, dones, infos, _ = map(np.array, zip(*[env.step(a) for env, a in zip(self.envs, actions)]))
+        for i in range(len(self.envs)):
+            if dones[i]:
+                next_states[i] = self.envs[i].reset()[0]
+        return next_states, rewards, dones, infos
+
+
+# Training the A3C agent
+
+import tqdm
+
+env_batch = EnvBatch(number_environment)
+batch_states = env_batch.reset()
+
+with tqdm.trange(0, 3001) as progress_bar:
+    for i in progress_bar:
+        batch_actions = agent.act(batch_states)
+        batch_next_states, batch_rewards, batch_dones, _ = env_batch.step(batch_actions)
+        batch_rewards *= 0.01
+        agent.step(batch_states, batch_actions, batch_rewards, batch_next_states, batch_dones)
+        batch_states = batch_next_states
+        if i % 1000 == 0:
+            print("Average agent reward: ", np.mean(evaluate(agent, env, n_episodes=10)))
+
+import glob
+import io
+import base64
+import imageio
+from IPython.display import HTML, display
+
+
+def show_video_of_model(agent, env):
+    state, _ = env.reset()
+    done = False
+    frames = []
+    while not done:
+        frame = env.render()
+        frames.append(frame)
+        action = agent.act(state)
+        state, reward, done, _, _ = env.step(action[0])
+    env.close()
+    imageio.mimsave('video.mp4', frames, fps=30)
+
+
+show_video_of_model(agent, env)
+
+
+def show_video():
+    mp4list = glob.glob('*.mp4')
+    if len(mp4list) > 0:
+        mp4 = mp4list[0]
+        video = io.open(mp4, 'r+b').read()
+        encoded = base64.b64encode(video)
+        display(HTML(data='''<video alt="test" autoplay
+                loop controls style="height: 400px;">
+                <source src="data:video/mp4;base64,{0}" type="video/mp4" />
+             </video>'''.format(encoded.decode('ascii'))))
+    else:
+        print("Could not find video")
+
+
+show_video()
