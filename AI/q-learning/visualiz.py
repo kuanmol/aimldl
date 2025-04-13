@@ -80,7 +80,7 @@ class Agent():
                 experiences = self.memory.sample(100)
                 self.learn(experiences, discount_factor)
 
-    def act(self, state, epilson=0.):
+    def act(self, state, epilson=0.0):
         state = torch.from_numpy(state).float().unsqueeze(0).to(self.device)
         self.local_qnetwork.eval()
         with torch.no_grad():

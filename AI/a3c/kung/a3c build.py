@@ -34,11 +34,10 @@ class Network(nn.Module):
 import gymnasium as gym
 import ale_py
 import cv2
-import math
-import random
 import numpy as np
 
 gym.register_envs(ale_py)
+
 
 
 class PreprocessAtari(ObservationWrapper):
@@ -84,7 +83,6 @@ class PreprocessAtari(ObservationWrapper):
 
 def make_env():
     env = gym.make("KungFuMasterDeterministic-v0", render_mode="rgb_array")
-
     env = PreprocessAtari(env, height=42, width=42, crop=lambda img: img, dim_order='pytorch', color=False, n_frames=4)
     return env
 
@@ -96,7 +94,7 @@ number_actions = env.action_space.n
 print("State shape:", state_shape)
 print("Number actions:", number_actions)
 print("Action names:", env.unwrapped.get_action_meanings())
-# %%
+
 
 # intializing the hyperparameters
 learning_rate = 1e-4
