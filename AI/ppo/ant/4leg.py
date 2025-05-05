@@ -17,6 +17,7 @@ MAX_TIMESTIPS = 3000000
 LEARNING_RATE = 3e-4
 REWARD_THRESHOLD = 3000.0
 
+
 # State Normalizer
 class StateNormalizer:
     def __init__(self, state_dim):
@@ -33,6 +34,7 @@ class StateNormalizer:
 
     def normalize(self, state):
         return np.clip((state - self.mean) / np.sqrt(self.var / self.count + 1e-8), -10, 10)
+
 
 # Actor-Critic Network
 class ActorCritic(nn.Module):
@@ -74,6 +76,7 @@ class ActorCritic(nn.Module):
         log_probs = dist.log_prob(actions).sum(-1)
         entropy = dist.entropy().sum(-1)
         return log_probs, values.squeeze(-1), entropy
+
 
 # PPO Agent
 class PPO:
@@ -119,6 +122,7 @@ class PPO:
                 num_batches += 1
 
         return (total_policy_loss / num_batches, total_critic_loss / num_batches, total_entropy / num_batches)
+
 
 # Main training loop
 def main():
@@ -187,11 +191,13 @@ def main():
                 actions_tensor = np.array(actions)
                 advantages = np.array(advantages)
                 returns = np.array(returns)
-                policy_loss, critic_loss, entropy = agent.update((states_tensor, actions, log_probs, returns, advantages))
+                policy_loss, critic_loss, entropy = agent.update(
+                    (states_tensor, actions, log_probs, returns, advantages))
                 states, actions, log_probs, rewards = [], [], [], []
 
         episode += 1
-        print(f"Episode {episode}, Reward: {episode_reward:.2f}, Timesteps: {total_timesteps}, Length: {episode_timesteps}")
+        print(
+            f"Episode {episode}, Reward: {episode_reward:.2f}, Timesteps: {total_timesteps}, Length: {episode_timesteps}")
         print(f"Avg Policy Loss: {policy_loss:.4f}, Avg Value Loss: {critic_loss:.4f}, Avg Entropy: {entropy:.4f}")
         reward_window.append(episode_reward)
         if len(reward_window) > WINDOW_SIZE:
@@ -208,6 +214,7 @@ def main():
             torch.save(agent.policy.state_dict(), f"ppo_ant_episode_{episode}.pth")
 
     env.close()
+
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
