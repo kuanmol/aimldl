@@ -10053,3 +10053,35 @@
 /TENSORFLOW/nlp_getting_started/sample_submission.csv
 /TENSORFLOW/nlp_getting_started/test.csv
 /TENSORFLOW/nlp_getting_started/train.csv
+/AI/q-learning/mountaincar-vo/mountcar-trained.mp4
+/TENSORFLOW/model_logs/simple-dense-model/20250416-002600/train/events.out.tfevents.1744743360.CRIMSON-CIRCUIT.16756.0.v2
+/TENSORFLOW/model_logs/
+/TENSORFLOW/nlp_getting_started/
+/AI/ppo/pole/ppo_cartpole.mp4
+/AI/ppo/pong_best.pth
+/AI/ppo/ant/ant_v5_episode_2100-episode-0.mp4
+/AI/ppo/ant/ppo_ant_episode_100.pth
+/AI/q-learning/flappybird/flappy_best.pth
+/AI/q-learning/flappybird/flappy_dqn.pth
+/AI/q-learning/flappybird/best_flappy_video.mp4
+/AI/q-learning/cart pole/cartpole_trained.mp4
+/AI/q-learning/acrobot/acrobot_solved.pth
+/AI/q-learning/acrobot/acrobot_video.mp4
+/AI/q-learning/mountaincar-vo/mountaincar.pth
+/AI/q-learning/mountaincar-vo/mountcar-trained.mp4
+/AI/ppo/human/evaluation_videos/
+/AI/ppo/human/ppo_humanoid_standup_mujoco
+/AI/ppo/mountaincar/models/
+/AI/ppo/human/models/
+/AI/ppo/human/videos/
+/AI/ppo/human/ppo_humanoid_standup.pth
+/AI/ppo/human/humanoid_standup_slow.mp4
+/llm_engineering/
+/llm_engineering/
+/.ipynb_checkpoints/
+/DL/RNN/Classifying Names with a Character-Level/data/
+/DL/RNN/eng-french/eng_-french.csv
+/TENSORFLOW/metadata.tsv
+/TENSORFLOW/pizza_steak.zip
+/AI/ppo/Pendulum/ppo_policy.pth
+/AI/ppo/Pendulum/ppo_value.pth
