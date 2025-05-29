@@ -10080,7 +10080,7 @@
 /llm_engineering/
 /.ipynb_checkpoints/
 /DL/RNN/Classifying Names with a Character-Level/data/
-/DL/RNN/eng-french/eng_-french.csv
+/DL/RNN/eng-french/sec/eng_-french.csv
 /TENSORFLOW/metadata.tsv
 /TENSORFLOW/pizza_steak.zip
 /AI/ppo/Pendulum/ppo_policy.pth
